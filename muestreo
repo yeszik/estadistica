@@ -1,0 +1,74 @@
+
+
+################################################################################################################
+####### ejecución   ############################################################################################
+################################################################################################################
+
+
+base<-read.csv('//192.168.1.27/Bancodedatos/listas nominales/2014/Septiembre/LN 29sep2014.csv')
+
+base<-base[base$edo==9,]
+
+
+muestras.vivienda(casos=2000,
+                  base=base,
+                  casos.estrato=NULL,
+                  niveles=c("municipio"),
+                  upm="secc",
+                  tamano="ln",
+                  factor.p=1,
+                  factor.e=1,
+                  epu=10,
+                  resto="simple",
+                  muestreo="PPTautoestratificado"
+                  )
+
+
+
+
+
+
+##########################################################################################################
+###########   función   ##################################################################################
+##########################################################################################################
+
+muestras.vivienda<-function(casos,
+                            base,
+                            casos.estrato=NULL,
+                            niveles,
+                            upm,
+                            tamano,
+                            factor.p,
+                            factor.e,
+                            epu,
+                            resto,
+                            muestreo){
+  ##################################################################################
+  ###########   preparo la base  ###################################################
+  ##################################################################################
+  
+  
+  (1)  
+  #Adalberto
+  #crear el vector de valores numéricos n.niveles y las variables numéricas n.upm n.tamano que contengan los números de columna correspondientes
+  
+  
+  (2)
+  #Jess
+  #ordenar la base primero por los elementos de la variable niveles y luego por la variable upm, en este caso por mun y luego por secc (haciendo referencia a los
+  #vectores que va a crear Adalberto)
+  #convertir las variables niveles y de upm en categóricas y quitar cualquier estrato extra en estas
+  
+  (1)
+  #Alberto
+  #crear el dataframe informacion que tenga como renglones a los niveles (en este caso va a tener 16 renglones correspondientes a las delegaciones), y cuyos rownames sean dichos nombres,
+  #otra columna llamada "tamano" con el tamaño de cada uno de los niveles
+  #otra columna llamada "casos" que asigne casos a cada nivel de manera proporcional al tamaño los casos
+  #pero que en caso de tener algun número asignado para la variable "casos.estrato" asigne el número de casos ahi definido a cada nivel
+  
+  
+  basemuestra<<-base
+  informacion<<-informacion
+  
+}
+
