@@ -60,7 +60,12 @@ muestras.vivienda<-function(casos,
   #ordenar la base primero por los elementos de la variable niveles y luego por la variable upm, en este caso por mun y luego por secc (haciendo referencia a los
   #vectores que va a crear Adalberto)
   #convertir las variables niveles y de upm en categóricas y quitar cualquier estrato extra en estas
-  
+  	base<-base[order(base[n.niveles],base[n.upm]),]
+	
+	base[,n.niveles]<-as.factor(base[,n.niveles])
+	base[,n.niveles]<-droplevels(base[,n.niveles])
+	base[,n.upm]<-as.factor(base[,n.upm])
+	base[,n.upm]<-droplevels(base[,n.upm])
   (1)
   #Alberto
   #crear el dataframe informacion que tenga como renglones a los niveles (en este caso va a tener 16 renglones correspondientes a las delegaciones), y cuyos rownames sean dichos nombres,
