@@ -62,10 +62,24 @@ muestras.vivienda<-function(casos,
   #convertir las variables niveles y de upm en categóricas y quitar cualquier estrato extra en estas
   	base<-base[order(base[n.niveles],base[n.upm]),]
 	
-	base[,n.niveles]<-as.factor(base[,n.niveles])
-	base[,n.niveles]<-droplevels(base[,n.niveles])
+	v<-NULL
+	for(i in 1:length(n.niveles)){
+		v[i]<-paste("base","[n.niveles[",i,"]","]",sep="")
+	}
+	v<-paste(v,collapse=",")
+	
+	eval(parse(text=paste(
+		"base<-base[order(",v,",base[n.upm]),]"
+		,sep="")))
+	
+	for(i in 1:length(n.niveles)){
+		base[,n.niveles[i]]<-as.factor(base[,n.niveles[i]])
+		base[,n.niveles[i]]<-droplevels(base[,n.niveles[i]])
+	}
+		
 	base[,n.upm]<-as.factor(base[,n.upm])
 	base[,n.upm]<-droplevels(base[,n.upm])
+	
   (1)
   #Alberto
   #crear el dataframe informacion que tenga como renglones a los niveles (en este caso va a tener 16 renglones correspondientes a las delegaciones), y cuyos rownames sean dichos nombres,
