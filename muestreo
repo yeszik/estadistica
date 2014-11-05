@@ -48,10 +48,12 @@ muestras.vivienda<-function(casos,
   ##################################################################################
   
   
-  (1)  
+  #(1)  
   #Adalberto
   #crear el vector de valores numéricos n.niveles y las variables numéricas n.upm n.tamano que contengan los números de columna correspondientes
-  
+  n.niveles<-match(niveles,names(base))
+  n.upm<-match(upm,names(base))
+  n.tamaño<-match(tamano,names(base))
   
   (2)
   #Jess
