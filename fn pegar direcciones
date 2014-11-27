@@ -1,0 +1,18 @@
+
+#direcciones<-'//192.168.1.27/Bancodedatos/listas nominales/direcciones.csv' por default dónde se ubica la base con las direcciones
+#muestra<-'C:/Users/IPerez/Desktop/Muestras/vivienda/Estado de México dtolocal - 24jun2014/mv dto 5 (tepic) 13jun2014.csv' ubicación 
+# y nombre de la muestra que necesita direcciones
+#nombre<-'mv dto 5 (tepic) 13jun2014' nombre que se le pondrá a la nueva muestra
+
+
+direcciones<-function(direcciones,muestra,nombre){
+	base<-read.csv(direcciones,header=TRUE)
+	muestra<-read.csv(muestra,header=TRUE)
+	entraron<-match(muestra$id,base$id)
+	base1<-base[entraron,c(7:10)]
+	base1$DOMICILIO<-droplevels(base1$DOMICILIO)
+	base1$UBICACION_CASILLA<-droplevels(base1$UBICACION_CASILLA)
+	base1$REFERENCIA_CASILLA<-droplevels(base1$REFERENCIA_CASILLA)
+	mues<-cbind(muestra,base1)
+	write.csv(mues,paste(nombre," con direcciones",".csv",sep=""))
+}
